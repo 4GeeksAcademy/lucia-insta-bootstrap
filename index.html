@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Feed</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-light">
+    
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-light bg-white border-bottom">
+        <div class="container">
+            <!-- Instagram Logo -->
+            <a class="navbar-brand" href="#">
+                <i class="fab fa-instagram"></i> Instagram
+            </a>
+            
+            <!-- CREATE POST DROPDOWN -->
+            <div class="dropdown">
+                <button class="btn btn-success dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                    Create a new post
+                </button>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#createModal">
+                        <i class="fas fa-camera"></i> Photo/Video
+                    </a></li>
+                    <li><a class="dropdown-item" href="#">
+                        <i class="fas fa-circle"></i> Story
+                    </a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTAINER -->
+    <div class="container mt-4">
+        
+        <!-- VIEW TOGGLE BUTTONS -->
+        <div class="text-center mb-4">
+            <div class="btn-group" role="group">
+                <button type="button" class="btn btn-outline-primary active" id="gridBtn">
+                    <i class="fas fa-th"></i>
+                </button>
+                <button type="button" class="btn btn-outline-primary" id="feedBtn">
+                    <i class="fas fa-square"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- GRID VIEW (3 columns) -->
+        <div id="gridView" class="row">
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=1" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=1" data-title="Beautiful Landscape">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=2" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=2" data-title="City Lights">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=3" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=3" data-title="Ocean Waves">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=4" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=4" data-title="Mountain View">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=5" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=5" data-title="Forest Path">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=6" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=6" data-title="Urban Art">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=7" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=7" data-title="Sunset Beach">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=8" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=8" data-title="Coffee Time">
+            </div>
+            <div class="col-lg-4 col-md-6 mb-3">
+                <img src="https://picsum.photos/400/400?random=9" class="img-fluid w-100" style="height: 300px; object-fit: cover; cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=9" data-title="Adventure">
+            </div>
+        </div>
+
+        <!-- FEED VIEW (1 column) -->
+        <div id="feedView" class="d-none">
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    
+                    <!-- POST 1 -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <div class="d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/40?u=1" class="rounded-circle me-2" width="32" height="32">
+                                <span class="fw-bold">breatheco</span>
+                                <small class="text-muted ms-auto">3h</small>
+                            </div>
+                        </div>
+                        <img src="https://picsum.photos/400/400?random=1" class="card-img" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=1" data-title="Beautiful Landscape">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <i class="far fa-heart fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-comment fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-paper-plane fs-5 text-dark" style="cursor: pointer;"></i>
+                                </div>
+                                <i class="far fa-bookmark fs-5 text-dark" style="cursor: pointer;"></i>
+                            </div>
+                            <p class="fw-bold mb-1">204 Likes</p>
+                            <p class="mb-1">
+                                <span class="fw-bold">breatheco</span> 
+                                Beautiful Landscape shot! This is an example of a very good photo that you can post on Instagram
+                            </p>
+                            <small class="text-muted">2/25</small>
+                        </div>
+                    </div>
+
+                    <!-- POST 2 -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <div class="d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/40?u=2" class="rounded-circle me-2" width="32" height="32">
+                                <span class="fw-bold">4geeksacademy</span>
+                                <small class="text-muted ms-auto">5h</small>
+                            </div>
+                        </div>
+                        <img src="https://picsum.photos/400/400?random=2" class="card-img" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=2" data-title="City Lights">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <i class="far fa-heart fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-comment fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-paper-plane fs-5 text-dark" style="cursor: pointer;"></i>
+                                </div>
+                                <i class="far fa-bookmark fs-5 text-dark" style="cursor: pointer;"></i>
+                            </div>
+                            <p class="fw-bold mb-1">152 Likes</p>
+                            <p class="mb-1">
+                                <span class="fw-bold">4geeksacademy</span> 
+                                City Lights at night! Amazing urban photography 🌃
+                            </p>
+                            <small class="text-muted">1/25</small>
+                        </div>
+                    </div>
+
+                    <!-- POST 3 -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-white">
+                            <div class="d-flex align-items-center">
+                                <img src="https://i.pravatar.cc/40?u=3" class="rounded-circle me-2" width="32" height="32">
+                                <span class="fw-bold">photographer</span>
+                                <small class="text-muted ms-auto">8h</small>
+                            </div>
+                        </div>
+                        <img src="https://picsum.photos/400/400?random=3" class="card-img" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#photoModal" data-img="https://picsum.photos/400/400?random=3" data-title="Ocean Waves">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <div>
+                                    <i class="far fa-heart fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-comment fs-5 me-3 text-dark" style="cursor: pointer;"></i>
+                                    <i class="far fa-paper-plane fs-5 text-dark" style="cursor: pointer;"></i>
+                                </div>
+                                <i class="far fa-bookmark fs-5 text-dark" style="cursor: pointer;"></i>
+                            </div>
+                            <p class="fw-bold mb-1">89 Likes</p>
+                            <p class="mb-1">
+                                <span class="fw-bold">photographer</span> 
+                                Ocean Waves crashing on the shore 🌊
+                            </p>
+                            <small class="text-muted">12/24</small>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PHOTO MODAL -->
+    <div class="modal fade" id="photoModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">Photo</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <img id="modalImage" src="" class="img-fluid mb-3">
+                    <p id="modalDescription">Click to see full size</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">
+                        <i class="fas fa-heart"></i> Like
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CREATE POST MODAL -->
+    <div class="modal fade" id="createModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Create New Post</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Upload Photo</label>
+                        <input type="file" class="form-control" accept="image/*">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Caption</label>
+                        <textarea class="form-control" rows="3" placeholder="Write a caption..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary">Share</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // VIEW TOGGLE FUNCTIONALITY
+        const gridBtn = document.getElementById('gridBtn');
+        const feedBtn = document.getElementById('feedBtn');
+        const gridView = document.getElementById('gridView');
+        const feedView = document.getElementById('feedView');
+
+        gridBtn.addEventListener('click', function() {
+            gridView.classList.remove('d-none');
+            feedView.classList.add('d-none');
+            gridBtn.classList.add('active');
+            feedBtn.classList.remove('active');
+        });
+
+        feedBtn.addEventListener('click', function() {
+            feedView.classList.remove('d-none');
+            gridView.classList.add('d-none');
+            feedBtn.classList.add('active');
+            gridBtn.classList.remove('active');
+        });
+
+        // MODAL FUNCTIONALITY
+        document.addEventListener('click', function(e) {
+            if (e.target.hasAttribute('data-bs-toggle') && e.target.getAttribute('data-bs-toggle') === 'modal') {
+                const img = e.target.getAttribute('data-img');
+                const title = e.target.getAttribute('data-title') || 'Photo';
+                
+                document.getElementById('modalImage').src = img;
+                document.getElementById('modalTitle').textContent = title;
+                document.getElementById('modalDescription').textContent = `Viewing: ${title}`;
+            }
+        });
+
+        // LIKE FUNCTIONALITY
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('fa-heart')) {
+                if (e.target.classList.contains('far')) {
+                    e.target.classList.remove('far');
+                    e.target.classList.add('fas');
+                    e.target.style.color = '#e91e63';
+                } else {
+                    e.target.classList.remove('fas');
+                    e.target.classList.add('far');
+                    e.target.style.color = '';
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
